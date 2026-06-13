@@ -1,0 +1,21 @@
+# Ignorer les fichiers temporaires et les dépendances
+node_modules/
+.DS_Store
+*.log
+*.tmp
+*.swp
+
+# Fichiers de build (si tu utilises un générateur de site statique plus tard)
+/build/
+/dist/
+
+# Fichiers locaux de configuration
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
