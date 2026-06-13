@@ -66,49 +66,45 @@ function initScrollAnimations() {
 
 /**
  * Affiche les vidéos en vedette sur la page d'accueil
+ * Note: Les vidéos sont maintenant directement dans le HTML, cette fonction est gardée pour compatibilité
  */
 function displayFeaturedVideos() {
+    // Les vidéos sont maintenant directement intégrées dans le HTML
+    // Cette fonction est gardée au cas où tu veux ajouter des vidéos dynamiquement plus tard
     const featuredContainer = document.getElementById('featured-videos');
     if (!featuredContainer) return;
     
-    // Récupère les vidéos de la page vidéos (simulation)
-    // Dans une version plus avancée, on pourrait les récupérer via une API ou un fichier JSON
-    const featuredVideos = [
-        {
-            id: 'dQw4w9WgXcQ',
-            title: 'Ma première interprétation',
-            description: 'Une reprise d\'un classique du blues à l\'harmonica.'
-        },
-        {
-            id: 'dQw4w9WgXcQ',
-            title: 'Composition originale',
-            description: 'Une pièce que j\'ai écrite pour rendre hommage à l\'harmonica.'
-        }
-    ];
-    
-    // Affiche les vidéos
-    featuredVideos.forEach(video => {
-        const videoCard = document.createElement('article');
-        videoCard.className = 'video-card';
-        videoCard.innerHTML = `
-            <div class="video-embed">
-                <iframe src="https://www.youtube.com/embed/${video.id}" 
-                        title="${video.title}" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-            <div class="video-info">
-                <h3>${video.title}</h3>
-                <p>${video.description}</p>
-            </div>
-        `;
-        featuredContainer.appendChild(videoCard);
-    });
-    
-    // Si on veut garder le placeholder, on peut supprimer cette fonction
-    // ou la modifier pour afficher un message différent
+    // Si tu veux ajouter des vidéos dynamiquement, tu peux utiliser cette fonction
+    // Exemple: addVideoToFeatured('ID_YouTube', 'Titre', 'Description');
 }
+
+/**
+ * Ajoute une vidéo à la section vedette de la page d'accueil
+ */
+function addVideoToFeatured(videoId, title, description) {
+    const featuredContainer = document.getElementById('featured-videos');
+    if (!featuredContainer) return;
+    
+    const videoCard = document.createElement('article');
+    videoCard.className = 'video-card';
+    videoCard.innerHTML = `
+        <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/${videoId}" 
+                    title="${title}" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        <div class="video-info">
+            <h3>${title}</h3>
+            <p>${description}</p>
+        </div>
+    `;
+    featuredContainer.appendChild(videoCard);
+}
+
+// Expose la fonction au scope global
+window.addVideoToFeatured = addVideoToFeatured;
 
 /**
  * Initialise le menu mobile (pour une future version responsive améliorée)
