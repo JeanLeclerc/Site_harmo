@@ -1,16 +1,26 @@
 /* Reset et variables */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --light-color: #ecf0f1;
-    --dark-color: #2c3e50;
+    /* Couleurs inspirées du bureau vintage et de Paris */
+    --primary-color: #2c3e50;       /* Bleu Paris */
+    --secondary-color: #D4AF37;    /* Or vieilli */
+    --accent-color: #5C4033;        /* Bois foncé */
+    --light-color: #F5F5DC;        /* Beige papier */
+    --dark-color: #1A1A1A;          /* Noir profond */
     --text-color: #333;
     --text-light: #7f8c8d;
     --white: #ffffff;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 15px rgba(0, 0, 0, 0.15);
     --border-radius: 8px;
+    --border-radius-lg: 12px;
     --transition: all 0.3s ease;
+    
+    /* Nouvelle palette pour Harmonica & Mélodies */
+    --bg-wood: #5C4033;
+    --bg-wood-light: #8B6F47;
+    --text-gold: #D4AF37;
+    --bg-paris: #2C3E50;
+    --bg-paris-light: #34495E;
 }
 
 * {
@@ -38,25 +48,47 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
+/* Header - Design inspiré du bureau vintage */
 header {
-    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    background: linear-gradient(135deg, var(--bg-paris), var(--bg-paris-light));
     color: var(--white);
-    padding: 2rem 0;
+    padding: 2.5rem 0 1.5rem;
     text-align: center;
     margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--text-gold), var(--secondary-color), var(--text-gold));
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
 }
 
 header .subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
+    font-size: 1.3rem;
+    opacity: 0.95;
     font-style: italic;
+    margin-bottom: 0.3rem;
+}
+
+header .artist-name {
+    font-size: 1rem;
+    opacity: 0.85;
+    font-weight: 300;
+    margin-top: 0.5rem;
 }
 
 /* Navigation */
@@ -135,20 +167,54 @@ main {
 .btn {
     display: inline-block;
     background-color: var(--secondary-color);
-    color: var(--white);
-    padding: 0.8rem 1.5rem;
+    color: var(--dark-color);
+    padding: 0.8rem 1.8rem;
     border: none;
     border-radius: var(--border-radius);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .btn:hover {
-    background-color: #2980b9;
+    background-color: var(--text-gold);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
+    color: var(--dark-color);
+}
+
+.btn-outline {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--secondary-color);
+    padding: 0.8rem 1.8rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 1rem;
+}
+
+.btn-outline:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.hero-buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 /* Sections */
@@ -171,7 +237,7 @@ section h2::after {
     left: 0;
     width: 50px;
     height: 3px;
-    background-color: var(--secondary-color);
+    background: linear-gradient(90deg, var(--text-gold), var(--secondary-color));
 }
 
 /* Featured Videos */
@@ -184,6 +250,54 @@ section h2::after {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
+}
+
+/* Styles Section */
+.styles-section {
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+}
+
+.styles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.style-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.style-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);
+}
+
+.style-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.style-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.style-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .video-card {
@@ -293,10 +407,12 @@ section h2::after {
 
 .about-text h2 {
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 .about-text p {
     margin-bottom: 1rem;
+    line-height: 1.7;
 }
 
 .about-image {
@@ -306,7 +422,160 @@ section h2::after {
 .about-image img {
     max-width: 100%;
     border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    border: 3px solid var(--secondary-color);
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+}
+
+.page-header h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* Répertoire Section */
+.repertoire-section {
+    margin-bottom: 3rem;
+}
+
+.repertoire-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.repertoire-category {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
     box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.repertoire-category:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.category-icon {
+    font-size: 1.8rem;
+}
+
+.category-header h3 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.songs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.song-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.song-item:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    transform: translateX(5px);
+}
+
+.song-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    flex: 2;
+}
+
+.song-artist {
+    color: var(--text-light);
+    flex: 2;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.song-difficulty {
+    color: var(--secondary-color);
+    font-weight: 600;
+    flex: 1;
+    text-align: right;
+}
+
+.see-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.see-more:hover {
+    color: var(--text-gold);
+    text-decoration: underline;
+}
+
+/* Répertoire CTA */
+.repertoire-cta {
+    background: linear-gradient(135deg, var(--bg-paris), var(--bg-paris-light));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.repertoire-cta h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.repertoire-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.repertoire-cta .btn {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+
+.repertoire-cta .btn:hover {
+    background-color: var(--text-gold);
+    color: var(--dark-color);
 }
 
 /* Footer */
@@ -338,6 +607,57 @@ footer p {
 .social-link:hover {
     color: var(--secondary-color);
     transform: scale(1.2);
+}
+
+/* Placeholder styling for video cards */
+.video-embed div[style*="background-color"] {
+    background-color: #f0f0f0;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: var(--border-radius);
+}
+
+.video-embed div[style*="background-color"] p {
+    text-align: center;
+    padding: 1rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Add video instructions */
+.add-video-instructions {
+    background-color: var(--light-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+}
+
+.add-video-instructions h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.add-video-instructions ol {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto 1rem auto;
+    padding-left: 1.5rem;
+}
+
+.add-video-instructions li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.add-video-instructions code {
+    background-color: var(--white);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9rem;
 }
 
 /* Responsive Design */
@@ -421,3 +741,8 @@ section {
 .mb-2 { margin-bottom: 1rem; }
 .mb-3 { margin-bottom: 1.5rem; }
 .mb-4 { margin-bottom: 2rem; }
+
+/* Featured videos section */
+.featured .text-center {
+    margin-top: 1.5rem;
+}
